@@ -1,0 +1,286 @@
+@charset "utf-8";
+i {
+    font-style: normal;
+}
+
+html,body {
+    width: 100%;
+    height: 100%;
+}
+.view-wrapper {
+    position: relative;
+    min-height: 100%;
+}
+.view-wrapper {
+    background: url("../images/bg.jpg") no-repeat top left;
+    background-size: 100%;
+}
+.share-btn {
+    position: absolute;
+    top: 0.2rem;
+    right: 0.25rem;
+    width: 1.25rem;
+    height: 0.6rem;
+    background: url("../images/share-btn.png") no-repeat center;
+    background-size: 100% 100%;
+    z-index: 40;
+}
+.ferris-wheel-container {
+    position: absolute;
+    top: 3.56rem;
+    left: 0;
+    width: 100%;
+}
+
+.ferris-wheel-footer {
+    position: absolute;
+    top: 2.03rem;
+    left: 50%;
+    width: 4.24rem;
+    height: 4.41rem;
+    margin-left: -2.12rem;
+    background: url("../images/icon_01.png") no-repeat center;
+    background-size: 100%;
+}
+.ferris-wheel-circle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 5.66rem;
+    height: 5.88rem;
+    margin-left: -2.83rem;
+    background: url("../images/icon_03.png") no-repeat center;
+    background-size: 100%;
+    transition: transform 6s ease;
+}
+.ferris-wheel-pointer {
+    position: absolute;
+    top: 1.05rem;
+    left: 50%;
+    width: 1.5rem;
+    height: 2.65rem;
+    margin-left: -0.75rem;
+    background: url("../images/icon_02.png") no-repeat center;
+    background-size: 100%;
+}
+
+.ferris-wheel-circle div {
+    position: absolute;
+    width: 2.6rem;
+    height: 2.6rem;
+    background-image: url("../images/animal.png");
+    background-repeat: no-repeat;
+    background-size: 15.6rem 5.2rem;
+    background-position: 0 0;
+}
+.animal.animal_01 {
+    top: -0.45rem;
+    left: 0.35rem;
+    background-position: 0 0;
+}
+.animal.animal_02 {
+    top: -0.45rem;
+    right: 0.35rem;
+    background-position: -2.6rem 0;
+}
+.animal.animal_03 {
+    top: 1.55rem;
+    left: -0.85rem;
+    background-position: -5.2rem 0;
+}
+.animal.animal_04 {
+    top: 1.55rem;
+    right: -0.85rem;
+    background-position: -7.8rem 0;
+}
+.animal.animal_05 {
+    bottom: -0.35rem;
+    left: 0.35rem;
+    background-position: -10.40rem 0;
+}
+.animal.animal_06 {
+    bottom: -0.35rem;
+    right: 0.35rem;
+    background-position: -13rem 0;
+}
+
+.animal.animal_01.act {
+    background-position: 0 -2.6rem;
+}
+.animal.animal_02.act {
+    background-position: -2.6rem -2.6rem;
+}
+.animal.animal_03.act {
+    background-position: -5.2rem -2.6rem;
+}
+.animal.animal_04.act {
+    background-position: -7.8rem -2.6rem;
+}
+.animal.animal_05.act {
+    background-position: -10.40rem -2.6rem;
+}
+.animal.animal_06.act {
+    background-position: -13rem -2.6rem;
+}
+.times-tip {
+    position: absolute;
+    top: 9.78rem;
+    left: 0;
+    width: 100%;
+    font-size: 0.21rem;
+    color: #ff4f24;
+    text-align: center;
+}
+.game-begin-box {
+    position: absolute;
+    top: 10.2rem;
+    left: 0;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+}
+.game-begin-btn {
+    width: 2.96rem;
+    height: 0.96rem;
+    background: url("../images/game-begin.png") no-repeat center;
+    background-size: 100%;
+}
+.game-handle {
+    position: absolute;
+    top: 11.1rem;
+    left: 0;
+    width: 100%;
+    padding: 0 0.7rem;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+.game-handle-rule {
+    width: 1.9rem;
+    height: 0.61rem;
+    background: url("../images/rule.png") no-repeat center;
+    background-size: 100%;
+}
+.game-handle-prize {
+    width: 2rem;
+    height: 0.8rem;
+    background: url("../images/my-prize.png") no-repeat center;
+    background-size: 100%;
+}
+/*弹窗*/
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 50;
+}
+.modal-share {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background: url("../images/share.png") no-repeat;
+    background-position: 1.35rem 0.3rem;
+    background-size: 5.45rem 1.70rem;
+}
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+}
+.modal-flex {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.modal-content {
+    width: 6.4rem;
+}
+.modal-header {
+    position: relative;
+    width: 6.4rem;
+    height: 1.9rem;
+    background: url("../images/modal-header.png") no-repeat center;
+    background-size: 100%;
+    z-index: 20;
+}
+.modal-body {
+    position: relative;
+    width: 5.6rem;
+    min-height: 3.4rem;
+    margin: -14px auto 0;
+    padding-top: 14px;
+    font-size: 0.39rem;
+    line-height: 1.5em;
+    color: #74541c;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    z-index: 10;
+    overflow: hidden;
+}
+.modal-body-flex {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 3.4rem;
+}
+.modal-body .font-pink {
+    color: #fe5f60;
+}
+.modal-body p {
+    font-weight: 700;
+}
+.wx-tip {
+    font-size: 0.23rem;
+    color: #ff7676;
+    padding: 0.3rem 0;
+    margin-bottom: 0.2rem;
+}
+.modal-close {
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: 0.3rem auto 0;
+    background: url("../images/modal-close.png") no-repeat center;
+    background-size: 100%;
+}
+.modal-btn {
+    width: 2.9rem;
+    height: 0.82rem;
+    line-height: 0.82rem;
+    margin: 0 auto 0.38rem;
+    background: url("../images/modal-btn_01.png") no-repeat center;
+    background-size: 100% 100%;
+    font-size: 0.32rem;
+    color: #ffffff;
+}
+.rule-box {
+    line-height: 1.2em;
+    height: 5rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.25rem;
+    color: #74541c;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 0.3rem;
+    overflow-y: scroll;
+}
+.rule-box span {
+    font-size: 0.26rem;
+    color: #fdb7b5;
+}

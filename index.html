@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <title>幸运摩天轮</title>
+    <script type="text/javascript">
+        (function (global) {
+            function remChange() {
+                document.documentElement.style.fontSize = 100 * document.documentElement.clientWidth / 750 + 'px';
+            }
+            remChange();
+            global.addEventListener('resize', remChange, false);
+        })(window);
+        var loadImg = function(pics, callback){
+            var index = 0;
+            var len = pics.length;
+            var img = new Image();
+            var flag = false;
+            var load = function(){
+                img.src = pics[index];
+                img.onload = function() {
+                    index ++ ;
+                    if (index < len) {
+                        load();
+                    }else{
+                        callback();
+                    }
+                }
+                return img;
+            }
+            if(len > 0){
+                load();
+            }
+        }
+        var pics = [
+            'images/animal.png',
+            'images/bg.jpg',
+            'images/game-begin.png',
+            'images/icon_01.png',
+            'images/icon_02.png',
+            'images/icon_03.png',
+            'images/modal-btn_01.png',
+            'images/modal-close.png',
+            'images/modal-header.png',
+            'images/my-prize.png',
+            'images/rule.png',
+            'images/share-btn.png',
+            'images/share.png'
+        ];
+        loadImg(pics,function () {console.log('图片加载完毕')});
+    </script>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="view-wrapper">
+        <div class="share-btn"></div>
+        <div class="ferris-wheel-container">
+            <div class="ferris-wheel-footer"></div>
+            <div class="ferris-wheel-circle">
+                <div class="animal animal_01"></div>
+                <div class="animal animal_02"></div>
+                <div class="animal animal_03"></div>
+                <div class="animal animal_04"></div>
+                <div class="animal animal_05"></div>
+                <div class="animal animal_06"></div>
+            </div>
+            <div class="ferris-wheel-pointer"></div>
+        </div>
+        <div class="times-tip">
+            今天还剩<span>三</span>次游戏机会
+        </div>
+        <div class="game-begin-box">
+            <span class="game-begin-btn"></span>
+        </div>
+        <div class="game-handle">
+            <div class="game-handle-rule"></div>
+            <div class="game-handle-prize"></div>
+        </div>
+    </div>
+    <div class="mask" style="display: none;"></div>
+
+    <!-- 配对成功弹窗 -->
+    <div class="modal modal-getPrize" style="display: none;">
+        <div class="modal-flex">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    <div class="modal-body-flex" style="height: 2.24rem;margin: 0 0.38rem;border-bottom: 1px dotted #fdb7b5;">
+                        <p>
+                            配对成功咯~<br />
+                            136####1212用户<br />
+                            获得<span class="font-pink modal-getPrize-data">30M</span>流量~
+                        </p>
+                    </div>
+                    <div class="wx-tip">
+                        <span>温馨提示：</span>同一用户活动期间只能获奖一次
+                    </div>
+                </div>
+                <div class="modal-close"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 重新配对弹窗 -->
+    <div class="modal modal-noPrize" style="display: none;">
+        <div class="modal-flex">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    <div class="modal-body-flex" style="height: 2.1rem;">
+                        <p>
+                            居然配对失败<br />
+                            一定要再试一次！
+                        </p>
+                    </div>
+                    <div class="modal-btn">重新配对</div>
+                </div>
+                <div class="modal-close"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 今日游戏次数用完了弹窗 -->
+    <div class="modal" style="display: none;">
+        <div class="modal-flex">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    <div class="modal-body-flex" style="height: 2.1rem;">
+                        <p>
+                            今天的游戏次数都用完啦~<br />
+                            明天再来呗
+                        </p>
+                    </div>
+                    <div class="modal-btn">分享给好友呗</div>
+                </div>
+                <div class="modal-close"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 所有次数用完了弹窗 -->
+    <div class="modal" style="display: none;">
+        <div class="modal-flex">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    <div class="modal-body-flex">
+                        <p>所有次数都用完咯~</p>
+                    </div>
+                </div>
+                <div class="modal-close"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 没有登录10086弹窗 -->
+    <div class="modal" style="display: none;">
+        <div class="modal-flex">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    <div class="modal-body-flex" style="height: 2.15rem;">
+                        <p>咦，你还没有登录‘中国移动10086’ 生活号哦~</p>
+                    </div>
+                    <div class="modal-btn">马上登录</div>
+                </div>
+                <div class="modal-close"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 这里空荡荡的弹窗 -->
+    <div class="modal modal-kong" style="display: none;">
+        <div class="modal-flex">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    <div class="modal-body-flex">
+                        <p>这里空荡荡的<br />赶紧选只萌物去配对吧~</p>
+                    </div>
+                </div>
+                <div class="modal-close"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 活动结束弹窗 -->
+    <div class="modal" style="display: none;">
+        <div class="modal-flex">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    <div class="modal-body-flex">
+                        <p>活动结束了<br />下次要早点来哦~</p>
+                    </div>
+                </div>
+                <div class="modal-close"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 活动规则弹窗 -->
+    <div class="modal modal-rule" style="display: none;">
+        <div class="modal-flex">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    <div class="rule-box">
+                        <span>1、活动时间</span><br />
+                        2017年12月1日-2017年12月15日（共15天）（以实际上线时间为准）<br /><br />
+
+                        <span>2、活动对象</span><br />
+                        10086APP广东移动用户<br /><br />
+
+                        <span>3、参与方式</span><br />
+                        用户每天可点击菜单【幸运摩天轮】页面参与抽奖活动。<br />
+                        获奖方式：<br />
+                        点击“开始游戏”启动旋转摩天轮，旋转停止后，将依据箭头指向领取奖品。当箭头指向熊猫、大象、长颈鹿、熊和兔子时，分别获取流量2G、1G、500M、150M和30M。箭头指向鳄鱼和其他空位则没有奖品。每位用户每天有3次游戏机会。<br /><br />
+
+                        <span>4、活动奖品</span><br />
+                        均为国内通用流量<br />
+                        奖品  份数<br />
+                        30M 40000<br />
+                        150M    25000<br />
+                        500M    8000<br />
+                        1G  7000<br />
+                        2G  2000<br /><br />
+
+                        5、流量奖品将于活动结束后30个工作日内赠送至中奖用户认证登录的手机号码中，届时会有短信提醒。<br /><br />
+
+                        6、奖品中奖查询：活动期间，客户可点击活动首页“我的奖品”查看。<br /><br />
+
+                        7、同一设备号、同一手机号活动期间限获奖一次。<br /><br />
+
+                        8、以下情况客户无法参与活动：非广东移动客户、限定客户、GPRS无限量套餐客户、4G随心王套餐客户、多号通的副号、一卡双号副号、家庭服务计划副号、万能副卡等附属号码客户、内部员工号码、物联网卡/机器卡客户、集团代付/对公托收（如政企动力100行业卡）客户、集团全额统付号码、任我用客户、万花筒客户、手机状态异常（停机、销户、欠费、转品牌未生效等状态）号码。<br /><br />
+
+                        9、若发现作弊行为，中国移动有资格取消其中奖资格，不作任何补偿。
+                    </div>
+                </div>
+                <div class="modal-close"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分享 -->
+    <div class="modal-share" style="display: none;"></div>
+
+    
+    <script src="js/jquery-1.10.1.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
+
+
